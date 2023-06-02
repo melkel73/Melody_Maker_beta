@@ -3,9 +3,7 @@ const { Project, User } = require('../models');
 const withAuth = require('../utils/auth');
 const SpotifyWebApi = require('spotify-web-api-node');
 const axios = require('axios');
-const clientId = '71ef4f563acb47d198bb7ef2241f6ffa';
-const clientSecret = 'cb2b2ce1adb2449698e13b08eb2dcd81';
-const redirectUri = 'http://localhost:3000/callback';
+
 
 router.get('/', async (req, res) => {
   
