@@ -1,53 +1,24 @@
-const loginFormHandler = async (event) => {
-  event.preventDefault();
+// Get the form element
+const loginForm = document.getElementById('login-form');
 
-  // Collect values from the login form
-  const email = document.querySelector('#email-login').value.trim();
-  const password = document.querySelector('#password-login').value.trim();
+// Add an event listener to the form submission
+loginForm.addEventListener('submit', (e) => {
+  e.preventDefault(); // Prevent the form from submitting
 
-  if (email && password) {
-    // Send a POST request to the API endpoint
-    const response = await fetch('/api/users/login', {
-      method: 'POST',
-      body: JSON.stringify({ email, password }),
-      headers: { 'Content-Type': 'application/json' },
-    });
+  // Get the input values
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
 
-    if (response.ok) {
-      // If successful, redirect the browser to the profile page
-      document.location.replace('/profile');
-    } else {
-      alert(response.statusText);
-    }
+  // TODO: Perform validation and authentication
+  // You would typically send a request to the server to verify the credentials
+
+  // Example validation
+  if (username === 'admin' && password === 'password') {
+    // Successful login
+    alert('Login successful!');
+    // TODO: Redirect to another page or perform other actions
+  } else {
+    // Failed login
+    alert('Invalid username or password.');
   }
-};
-
-const signupFormHandler = async (event) => {
-  event.preventDefault();
-
-  const name = document.querySelector('#name-signup').value.trim();
-  const email = document.querySelector('#email-signup').value.trim();
-  const password = document.querySelector('#password-signup').value.trim();
-
-  if (name && email && password) {
-    const response = await fetch('/api/users', {
-      method: 'POST',
-      body: JSON.stringify({ name, email, password }),
-      headers: { 'Content-Type': 'application/json' },
-    });
-
-    if (response.ok) {
-      document.location.replace('/profile');
-    } else {
-      alert(response.statusText);
-    }
-  }
-};
-
-document
-  .querySelector('.login-form')
-  .addEventListener('submit', loginFormHandler);
-
-document
-  .querySelector('.signup-form')
-  .addEventListener('submit', signupFormHandler);
+});
