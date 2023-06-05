@@ -1,25 +1,29 @@
-const sequelize = require('../config/connection');
-const { User, Project } = require('../models');
+const fs = require('fs');
+const Project = require('./models/project'); // Replace with your project model
 
-const userData = require('./userData.json');
-const projectData = require('./projectData.json');
-
-const seedDatabase = async () => {
-  await sequelize.sync({ force: true });
-
-  const users = await User.bulkCreate(userData, {
-    individualHooks: true,
-    returning: true,
-  });
-
-  for (const project of projectData) {
-    await Project.create({
-      ...project,
-      user_id: users[Math.floor(Math.random() * users.length)].id,
-    });
+// Read the projectdata.json file
+fs.readFile('projectdata.json', 'utf8', (err, data) => {
+  if (err) {
+    console.error('Error reading projectdata.json:', err);
+    return;
   }
 
-  process.exit(0);
-};
+  try {
+    const projects = JSON.parse(data);
 
-seedDatabase();
+    // Insert each project into the database
+    projects.forEach((projectData) => {
+      const project = new Project(projectData);
+
+      project.save((err) => {
+        if (err) {
+          console.error('Error saving project:', err);
+        } else {
+          console.log('Project saved:', project.name);
+        }
+      });
+    });
+  } catch (error) {
+    console.error('Error parsing projectdata.json:', error);
+  }
+});
