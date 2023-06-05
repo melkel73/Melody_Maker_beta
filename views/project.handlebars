@@ -1,14 +1,30 @@
-<div class="text-center">
-  <h2>{{name}}</h2>
-  <p>{{{get_emoji}}}</p>
-  <p>{{description}}</p>
-  <p>Created by {{user.name}} on {{format_date date_created}}</p>
-  <p>
-    <span for="img" aria-label="money">💲</span>
-    <span class="dollar-amount">{{format_amount needed_funding}}</span>
-    needed
-  </p>
-  <p>
-    <button class="btn btn-primary">Fund this Project!</button>
-  </p>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Melody Mover</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/signup">Sign Up</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/projects">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="project">
+        <div class="project-content">
+            <h1>{{projectName}}</h1>
+            <p>{{projectDescription}}</p>
+            <!-- Add more project details as needed -->
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2023 Melody Mover. All rights reserved.</p>
+    </footer>
+</body>
+</html>
