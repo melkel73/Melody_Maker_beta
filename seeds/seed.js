@@ -1,25 +1,24 @@
-const sequelize = require('../config/connection');
-const { User, Project } = require('../models');
+const fs = require('fs');
+const path = require('path');
+const { Melodymover } = require('./models'); // Project name
 
-const userData = require('./userData.json');
-const projectData = require('./projectData.json');
+const seed = async () => {
+  try {
+    // Referring back to Melody Mover data from the JSON file
+    const filePath = path.join(__dirname, 'projectData.json');
+    const rawData = fs.readFileSync(filePath);
+    const projectData = JSON.parse(rawData);
 
-const seedDatabase = async () => {
-  await sequelize.sync({ force: true });
+    // Seed the projects into the database
+    await Project.bulkCreate(projectData.projects);
 
-  const users = await User.bulkCreate(userData, {
-    individualHooks: true,
-    returning: true,
-  });
-
-  for (const project of projectData) {
-    await Project.create({
-      ...project,
-      user_id: users[Math.floor(Math.random() * users.length)].id,
-    });
+    console.log('Seeding completed successfully.');
+  } catch (error) {
+    console.error('Error seeding data:', error);
+  } finally {
+    // Exit the process after seeding
+    process.exit(0);
   }
-
-  process.exit(0);
 };
 
-seedDatabase();
+seed();
