@@ -1,9 +1,23 @@
-const router = require('express').Router();
+const express = require('express');
+const app = express();
+const port = 3000;
 
-const apiRoutes = require('./api');
-const homeRoutes = require('./homeRoutes');
+// Middleware
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static('public'));
 
-router.use('/', homeRoutes);
-router.use('/api', apiRoutes);
+// Routes
+const homeRoute = require('./routes/homeRoute');
+const loginRoute = require('./routes/loginRoute');
+const signupRoute = require('./routes/signupRoute');
+const transferRoute = require('./routes/transferRoute');
 
-module.exports = router;
+app.use('/', homeRoute);
+app.use('/login', loginRoute);
+app.use('/signup', signupRoute);
+app.use('/transfer', transferRoute);
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
