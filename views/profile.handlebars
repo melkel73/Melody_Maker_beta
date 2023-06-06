@@ -1,9 +1,17 @@
+{{> main}}
 
- 
-  <p>Subview here</p>
-  <ul>
-    {{#each playlists}}
-      <li>{{ this.name }}</li>
-    {{/each}}
-  </ul>
+{{#*inline "body"}}
+  <section class="profile">
+    <div class="container">
+      <h2>User Profile</h2>
+      <div class="profile-info">
+        <p><strong>Name:</strong> {{user.name}}</p>
+        <p><strong>Email:</strong> {{user.email}}</p>
+        <p><strong>Username:</strong> {{user.username}}</p>
+      </div>
+      <a href="/logout" class="btn">Logout</a>
+    </div>
+  </section>
+{{/inline}}
+
 
