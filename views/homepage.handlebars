@@ -1,6 +1,4 @@
-{{> main}}
-
-{{#*inline "body"}}
+{{inline "body}}
   <section class="hero">
     <div class="container">
       <h1>Welcome to Melody MelodyMover</h1>
@@ -9,3 +7,35 @@
     </div>
   </section>
 {{/inline}}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/signup">Sign Up</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/projects">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to the Melody Mover!</h1>
+            <p>Start transferring your favorite Spotify music to Amazon Music now.</p>
+            <a href="/projects" class="btn">View Projects</a>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2023 Your App. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+

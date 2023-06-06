@@ -1,6 +1,7 @@
-{{> main}}
 
-{{#*inline "body"}}
+{{main}}
+
+{{"inline "body"}}
   <section class="profile">
     <div class="container">
       <h2>User Profile</h2>
@@ -13,5 +14,20 @@
     </div>
   </section>
 {{/inline}}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="/js/profile.js"></script>
+</head>
+<body>
+    <h1>Welcome to Your Profile!</h1>
+    <p>Username: {{username}}</p>
+    <p>Email: {{email}}</p>
+    <!-- Add more profile details as needed -->
+</body>
+</html>
 
 
