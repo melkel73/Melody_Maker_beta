@@ -1,3 +1,4 @@
+
 {
   "users": [
     {
@@ -20,3 +21,28 @@
     }
   ]
 }
+
+[
+  {
+    "id": 1,
+    "username": "Terrell",
+    "email": "Terrell@example.com",
+    "password": "hashed_password_1"
+  },
+  {
+    "id": 2,
+    "username": "Melanie",
+    "email": "Melanie@example.com",
+    "password": "hashed_password_2"
+  },
+  {
+    "id": 3,
+    "username": "Arturo",
+    "email": "Arturo@example.com",
+    "password": "hashed_password_3"
+  }
+]
+
+
+ 
+
