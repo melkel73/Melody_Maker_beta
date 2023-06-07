@@ -1,47 +1,17 @@
-const newFormHandler = async (event) => {
-  event.preventDefault();
+// Get the profile form element
+const profileForm = document.getElementById('profile-form');
 
-  const name = document.querySelector('#project-name').value.trim();
-  const needed_funding = document.querySelector('#project-funding').value.trim();
-  const description = document.querySelector('#project-desc').value.trim();
+// Add an event listener to the form submission
+profileForm.addEventListener('submit', (e) => {
+  e.preventDefault(); // Prevent the form from submitting
 
-  if (name && needed_funding && description) {
-    const response = await fetch(`/api/projects`, {
-      method: 'POST',
-      body: JSON.stringify({ name, needed_funding, description }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+  // Get the input values
+  const fullName = document.getElementById('full-name').value;
+  const email = document.getElementById('email').value;
+  
+  // TODO: Perform profile update logic
+  // You can send a request to the server to update the user's profile information
 
-    if (response.ok) {
-      document.location.replace('/profile');
-    } else {
-      alert('Failed to create project');
-    }
-  }
-};
-
-const delButtonHandler = async (event) => {
-  if (event.target.hasAttribute('data-id')) {
-    const id = event.target.getAttribute('data-id');
-
-    const response = await fetch(`/api/projects/${id}`, {
-      method: 'DELETE',
-    });
-
-    if (response.ok) {
-      document.location.replace('/profile');
-    } else {
-      alert('Failed to delete project');
-    }
-  }
-};
-
-document
-  .querySelector('.new-project-form')
-  .addEventListener('submit', newFormHandler);
-
-document
-  .querySelector('.project-list')
-  .addEventListener('click', delButtonHandler);
+  // Example profile update
+  alert('Your Profile has been Updated! - Melody Mover');
+});
